@@ -16,8 +16,12 @@ service = Service(chromedriver_path)
 driver = webdriver.Chrome(service=service, options=chrome_options)
 
 try:
-    # Prompt the user for the website URL
-    url = input("Enter the website URL: ")
+
+    realm=input("Enter the Realm Name:")
+    with open('url.txt', 'r') as url_file:
+        url = "http://"+ url_file.read().strip() + "/realms/" +realm + "/account/"
+
+    # Open the website URL
     driver.get(url)
     time.sleep(5)
 
